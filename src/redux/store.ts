@@ -4,11 +4,13 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, pers
 import storage from 'redux-persist/es/storage';
 import profileSlice from './slices/profileSlice';
 import ChangeDpSlice from '../pages/profile/redux/ChangeDpSlice';
+import ChangeProfileSlice from '../pages/profile/redux/UpdateProfileSlice';
 
 const rootReducer = combineReducers({
     token: tokenReducer,
     profile: profileSlice,
-    changeDp: ChangeDpSlice
+    changeDp: ChangeDpSlice,
+    changeProfileData: ChangeProfileSlice,
 })
 
 const persistConfig = {

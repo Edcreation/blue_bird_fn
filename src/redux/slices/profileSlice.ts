@@ -9,7 +9,10 @@ export type InitialState = {
 
 export type USER_PROFILE = {
     _id: string,
-    userId: string,
+    userId: {
+      _id: string,
+      username: string,
+    },
     __v: number, 
     image: string,
     bio: string,
@@ -21,7 +24,10 @@ const initialState: InitialState = {
   loading: false,
   profile: {
     _id: '',
-    userId: '',
+    userId: {
+      _id: '',
+      username: '',
+    },
     __v: 0, 
     image: '',
     bio: '',

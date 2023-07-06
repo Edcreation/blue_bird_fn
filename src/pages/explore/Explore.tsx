@@ -100,8 +100,8 @@ function Main() {
 		},
 	];
 	return (
-		<div className="pb-20 p-4 mt-10 w-full max-w-[1440px] ">
-			<div className="flex flex-col items-center justify-center">
+		<div className="pb-20 p-4 pt-20 w-full max-w-[1440px] ">
+			<div className="flex flex-wrap gap-3 justify-center">
 				{posts.map((post, index) => (
 					<TextCard
 						key={index}
