@@ -1,0 +1,1 @@
+export const HOME_INTRO_TEXT = "Connect, share, and stay connected with friends and family on our revolutionary social media app. Discover a vibrant community where you can express yourself, engage in meaningful conversations, and share memorable moments. Join us now and experience the power of connection in a whole new way."
