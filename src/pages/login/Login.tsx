@@ -62,20 +62,20 @@ export default function Login() {
 		});
 	};
 	return (
-		<div className="w-full flex flex-col items-center justify-start dark:text-white">
+		<div className="w-full flex flex-col items-center justify-start text-white">
 			<form
 				onSubmit={handleSubmit}
 				className="w-4/5 z-10 md:w-3/5 lg:w-1/2 max-w-[600px] mt-20 overflow-hidden flex flex-row justify-center items-start"
 			>
 				<div
-					className="w-2/5 hidden rounded-l border border-r-0 md:block overflow-hidden h-96 scale-100 border-slate-400 dark:border-slate-500"
+					className="w-2/5 hidden rounded-l border border-r-0 md:block overflow-hidden h-96 scale-100  border-slate-500"
 					style={{
 						backgroundImage: `url(${image})`,
 						backgroundRepeat: "no-repeat",
 						backgroundSize: "cover",
 					}}
 				></div>
-				<div className="w-full md:w-3/5 h-96 border md:border-l-0 flex flex-col justify-center items-center rounded-tr-md rounded-br-md bg-slate-300 border-slate-400 dark:bg-slate-700 dark:border-slate-500">
+				<div className="w-full md:w-3/5 h-96 border md:border-l-0 flex flex-col justify-center items-center rounded-tr-md rounded-br-md   bg-slate-700 border-slate-500">
 					<div className="w-full text-center text-lg font-semibold p-2">
 						Log In
 					</div>
@@ -85,7 +85,7 @@ export default function Login() {
 						<input
 							type="email"
 							name="email"
-							className="bg-transparent text-black w-full border-slate-500 border-b focus:outline-none p-1 dark:text-white"
+							className="bg-transparent w-full border-slate-500 border-b focus:outline-none p-1 text-white"
 							autoComplete="off"
 						/>
 					</div>
@@ -94,7 +94,7 @@ export default function Login() {
 						<input
 							type="password"
 							name="password"
-							className="bg-transparent text-black w-full border-slate-500 border-b focus:outline-none p-1 dark:text-white"
+							className="bg-transparent w-full border-slate-500 border-b focus:outline-none p-1 text-white"
 							autoComplete="off"
 						/>
 					</div>

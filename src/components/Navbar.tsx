@@ -11,7 +11,7 @@ export default function Navbar() {
 	const [openMenu, setOpenMenu] = useState(false);
 	return (
 		<header className="max-w-[1440px] ">
-			<nav className="p-3 flex z-50 pt-3 flex-row justify-between dark:text-white">
+			<nav className=" flex z-50 pt-2 px-3 flex-row fixed top-0 w-full backdrop-blur-sm justify-between text-white">
 				<div className="font-extrabold text-xl flex items-center justify-center flex-row text-blue-600">
 					<img
 						width="0"
@@ -22,16 +22,10 @@ export default function Navbar() {
 						alt="logo"
 					/>
 				</div>
-				<div
-					onClick={() => setOpenMenu(false)}
-					className={`absolute ${
-						openMenu ? "" : "hidden"
-					} left-0 bottom-0 z-30 w-full  h-full`}
-				></div>
 				<ul
 					className={`flex-row ${
 						openMenu ? "" : "hidden"
-					} md:flex md:relative md:m-0 md:bg-transparent text-slate-800 dark:bg-slate-800 z-50 dark:text-white items-center text-start mt-10 max-w-[200px] w-52 absolute right-3 bg-slate-300`}
+					} md:flex md:relative md:m-0 md:bg-transparent z-50 text-white items-center text-start mt-10 max-w-[200px] w-52 absolute right-3 bg-slate-300`}
 				>
 					<li className="w-full p-3 md:hover:bg-transparent md:hover:underline md:hover:text-blue-600 transition-opacity hover:bg-blue-600 hover:text-white">
 						<Link to="/">Home</Link>
@@ -40,7 +34,7 @@ export default function Navbar() {
 						<Link to="/explore">Explore</Link>
 					</li>
 					<li className="w-full p-3 md:hover:bg-transparent md:hover:underline md:hover:text-blue-600 transition-opacity hover:bg-blue-600 hover:text-white">
-						Trending
+					<Link to="/movie">Movies</Link>
 					</li>
 				</ul>
 				<div className="flex flex-row items-center justify-center">
@@ -89,21 +83,16 @@ function ProfileButtons() {
 	const { loading, profile } = useAppSelector((state) => state.profile);
     const token = useAppSelector((state) => state.token.value);
     const dpChange = useAppSelector((state) => state.changeDp);
+    const pChange = useAppSelector((state) => state.changeProfileData);
 	const dispatch = useAppDispatch();
 
     useEffect(() => {
       dispatch(fetchProfile(token || ''))
-    }, [token, dispatch, dpChange])
+    }, [token, dispatch, dpChange, pChange])
     
 	const navigate = useNavigate();
 	return (
 		<div className="flex flex-row items-center right-10">
-			<div
-				onClick={() => setOpenProfile(false)}
-				className={`absolute ${
-					openProfile ? "" : "hidden"
-				} left-0 bottom-0 w-full h-full`}
-			></div>
 			<div className="text-blue-600 mr-5 text-lg ">
 				<i className="fa fa-bell-o" aria-hidden="true"></i>
 			</div>
@@ -118,34 +107,40 @@ function ProfileButtons() {
 					className="h-8 w-8 object-fit cursor-pointer rounded-full bg-blue-600"
 					style={{
 						background: `url(${
-							profile.image ||
+							profile?.image ||
 							"https://t4.ftcdn.net/jpg/00/64/67/27/360_F_64672736_U5kpdGs9keUll8CRQ3p3YaEv2M6qkVY5.jpg"
 						})`,
 						backgroundSize: "contain",
+                        WebkitBackgroundSize: "contain"
 					}}
 				></div>
 			)}
-
 			<div
-				className={`w-52 absolute ${
+				onMouseLeave={() => setOpenProfile((prev) => !prev)}
+				className={`w-52 h-screen flex flex-col justify-between bg-slate-800 fixed ${
 					openProfile ? "" : "hidden"
-				} z-50 right-3 top-12 mt-4`}
+				} z-10 right-0 top-0`}
 			>
-				<div className="w-full p-2 bg-slate-200 flex flex-row justify-center items-center dark:bg-slate-700">
-					<div className="w-10 h-10 bg-white rounded-full border border-slate-50"></div>
-					<div className="ml-5 text-sm dark:text-white italic font-semibold">
-						eddymugish65
+				<div className="">
+					<div  className="h-12  bg-slate-900 flex justify-start items-center">
+						<div onClick={() => setOpenProfile(false)} className="p-4 py-3 bg-slate-700 cursor-pointer">
+							<i className="fa fa-chevron-left" aria-hidden="true"></i>
+						</div>
 					</div>
+
+						<div
+							onClick={() => navigate("/profile")}
+							className="p-2 mt-5 cursor-pointer  hover:bg-blue-600 bg-slate-800"
+						>
+							<i className="fa fa-user mr-3" aria-hidden="true"></i>Profile
+						</div>
 				</div>
 				<div
-					onClick={() => navigate("/profile")}
-					className="p-2 cursor-pointer bg-slate-200 hover:bg-blue-600 hover:text-white dark:bg-slate-800"
-				>
-					<i className="fa fa-user mr-3" aria-hidden="true"></i>Profile
-				</div>
-				<div
-					onClick={() => dispatch(clearToken())}
-					className="p-2 cursor-pointer bg-slate-200 hover:bg-blue-600 hover:text-white dark:bg-slate-800"
+					onClick={() => {
+						dispatch(clearToken());
+						navigate('/explore')
+					}}
+					className="p-2 cursor-pointer  hover:bg-blue-600 hover:text-white bg-slate-800"
 				>
 					<i className="fa fa-sign-out mr-3" aria-hidden="true"></i>Logout
 				</div>

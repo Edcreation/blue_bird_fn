@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from 'react';
 
 export interface CustomButtonType {
     text: string;
@@ -16,7 +16,8 @@ export interface TextCardType {
     id: string;
     likes: string;
     shares: string;
-    comments: string; 
+    comments: string;
+    poster: string;
 }
 export interface ImageCardType {
     image: string;
@@ -28,11 +29,24 @@ export interface ImageCardType {
     id: string;
     likes: string;
     shares: string;
-    comments: string; 
+    comments: string;
 }
-
 export interface ProtectComponentProps {
     children: ReactNode;
     replace?: ReactNode;
-  }
-  
+}
+
+export type POST = {
+	id: string;
+	userId: {
+		_id: string;
+		username: string;
+	};
+	profileId: {
+		_id: string;
+		image: string;
+	};
+	text: string;
+	date: string;
+	movieId: string;
+};
