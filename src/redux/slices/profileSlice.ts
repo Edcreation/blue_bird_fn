@@ -13,7 +13,7 @@ export type USER_PROFILE = {
       _id: string,
       username: string,
     },
-    __v: number, 
+    __v: number,
     image: string,
     bio: string,
     location: string,
@@ -28,7 +28,7 @@ const initialState: InitialState = {
       _id: '',
       username: '',
     },
-    __v: 0, 
+    __v: 0,
     image: '',
     bio: '',
     location: '',
@@ -41,21 +41,21 @@ function rejectWithValue(error: string) {
   throw new Error(error);
 }
 
-export const fetchProfile = createAsyncThunk('profile/getProfile', async (token: string) => {
+export const fetchProfile = createAsyncThunk('profile/getProfile', async(token: string) => {
   return api
-    .get(`/api/profile`, {
-        headers: { Authorization: `Bearer ${token}` }
+    .get('/api/profile', {
+      headers: { Authorization: `Bearer ${token}` }
     })
     .then((response) => {
-      console.log(response.data.data)
+      console.log(response.data.data);
       return response.data.data;
     })
     .catch((error) => {
       switch (error.response.status) {
-        case 500:
-          return rejectWithValue('Internal Error.');
-        default:
-          return rejectWithValue(error.response.data.message);
+      case 500:
+        return rejectWithValue('Internal Error.');
+      default:
+        return rejectWithValue(error.response.data.message);
       }
     });
 });
