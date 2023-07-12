@@ -11,7 +11,7 @@ export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
   return (
     <header className="max-w-[1440px] ">
-      <nav className=" flex z-50 pt-2 px-3 flex-row fixed top-0 w-full backdrop-blur-sm justify-between text-white">
+      <nav className=" flex z-50 pt-2 pb-2 px-3 flex-row fixed top-0 w-full backdrop-blur-sm justify-between text-white">
         <div className="font-extrabold text-xl flex items-center justify-center flex-row text-blue-600">
           <img
             width="0"
@@ -25,7 +25,7 @@ export default function Navbar() {
         <ul
           className={`flex-row ${
             openMenu ? '' : 'hidden'
-          } md:flex md:relative md:m-0 md:bg-transparent z-50 text-white items-center text-start mt-10 max-w-[200px] w-52 absolute right-3 bg-slate-300`}
+          } md:flex md:relative md:m-0 md:bg-transparent z-50 text-white items-center text-start mt-10 md:max-w-[200px] w-full absolute right-0 bg-slate-900`}
         >
           <li className="w-full p-3 md:hover:bg-transparent md:hover:underline md:hover:text-blue-600 transition-opacity hover:bg-blue-600 hover:text-white">
             <Link to="/">Home</Link>
@@ -115,7 +115,7 @@ function ProfileButtons() {
       }
       <div
         onMouseLeave={() => setOpenProfile((prev) => !prev)}
-        className={`w-52 h-screen flex flex-col justify-between bg-slate-800 fixed ${
+        className={`w-52 h-56 mt-[48px] md:mt-12 flex flex-col justify-between bg-slate-800 fixed ${
           openProfile ? '' : 'hidden'
         } z-10 right-0 top-0`}
       >
@@ -131,6 +131,12 @@ function ProfileButtons() {
             className="p-2 mt-5 cursor-pointer  hover:bg-blue-600 bg-slate-800"
           >
             <i className="fa fa-user mr-3" aria-hidden="true"></i>Profile
+          </div>
+          <div
+            onClick={() => navigate('/profile')}
+            className="p-2 cursor-pointer  hover:bg-blue-600 bg-slate-800"
+          >
+            <i className="fa fa-cogs text-[10px] mr-3" aria-hidden="true"></i>Settings
           </div>
         </div>
         <div

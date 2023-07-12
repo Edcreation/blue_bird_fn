@@ -47,7 +47,6 @@ export const fetchProfile = createAsyncThunk('profile/getProfile', async(token: 
       headers: { Authorization: `Bearer ${token}` }
     })
     .then((response) => {
-      console.log(response.data.data);
       return response.data.data;
     })
     .catch((error) => {

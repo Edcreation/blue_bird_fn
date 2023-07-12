@@ -13,7 +13,6 @@ function Home() {
           <pointLight position={[10, 10, 10]} />
           <CustomGeometryParticles count={7000} shape="sphere"/>
           <OrbitControls autoRotate />
-          {/* <Box /> */}
         </Canvas>
       </div>
     </div>
